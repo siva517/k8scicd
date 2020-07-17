@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: intro-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: intro-app
+  template:
+    metadata:
+      labels:
+        app: intro-app
+    spec:
+      containers:
+        - name: intro-app
+          image: nginx
+          ports:
+          - containerPort: 80
+          volumeMounts:
+          - mountPath: /var/share/nginx/html
+            name: config-volume
+      volumes:
+        - name: config-volume
+          configMap:
+            name: nginx-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: intro-nginx
+spec:
+  type: LoadBalancer
+  selector:
+    app: intro-app
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 80
