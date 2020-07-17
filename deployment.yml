@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: app
-        image: siva517/k8scicd
+        image: k8scicd
         resources:
           requests:
             cpu: 10m
