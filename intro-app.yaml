@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: intro-app
-          image: nginx
+          image: thumati.azurecr.io/nginx
           ports:
           - containerPort: 80
           volumeMounts:
