@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: app
-        image: "{{ image_id }}"
+        image: "{{ image_id123 }}"
         resources:
           requests:
             cpu: 10m
@@ -26,11 +26,10 @@ kind: Service
 metadata:
   name: hello-svc
 spec:
+  type: LoadBalancer
   selector:
-    role: app
+    app: intro-app
   ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 8080
-      nodePort: 32001
-  type: NodePort
+    - port: 80
+      protocol: TCP
+      targetPort: 80
