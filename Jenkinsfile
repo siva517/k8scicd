@@ -57,7 +57,7 @@ pipeline {
             steps {
                 script{
                     def image_id = registry + ":$BUILD_NUMBER"
-                    sh "kubectl config use-context siva"
+                    sh "kubectl config set-context --current --namespace=siva"
                     sh "kubectl apply -f intro-app.yaml"
                 }
             }
