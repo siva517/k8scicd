@@ -28,7 +28,7 @@ metadata:
 spec:
   type: LoadBalancer
   selector:
-    app: intro-app
+    role: app
   ports:
     - port: 80
       protocol: TCP
